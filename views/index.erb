@@ -9,6 +9,14 @@
 
 <ul>
   <% @contacts.each do |contact| %>
-    <li><a href="/contacts/<%= contact.id %>"><%= contact.name %></li>
+    <li><a href="/contacts/<%= contact.id %>"><%= contact.name %></a></li>
   <% end %>
 </ul>
+
+<form action="/" method="get">
+    <label for="query">Search: </label>
+    <input type="text" name="query" id="query" />
+
+    <input type="submit" value="Search" /><br>
+
+</form>
