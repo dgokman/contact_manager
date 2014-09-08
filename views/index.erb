@@ -1,8 +1,11 @@
-<% if params[:page].to_i > 1 %>
+<% if params[:page].to_i > 1 && params[:query].nil? %>
 <a href="?page=<%= @prev_page %>">Prev Page</a>
 <% end %>
-<% if params[:page].nil? || params[:page].to_i <= (@contacts_all.length / @limit) %>
+<% if (params[:page].nil? || params[:page].to_i <= (@contacts_all.length / @limit)) && params[:query].nil? %>
 <a href="?page=<%= @next_page %>">Next Page</a>
+<% end %>
+<% if params[:query] %>
+<a href="/">Contacts</a>
 <% end %>
 
 <h1>Contacts</h1>

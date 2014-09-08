@@ -10,8 +10,7 @@ get '/' do
   @contacts_all = Contact.all
   @limit = 3
   if params[:query] && params[:page].nil?
-    @contacts = Contact.where(first_name: params[:query])
-
+    @contacts = Contact.where("first_name = ? OR last_name = ?", params[:query], params[:query])
   elsif params[:query].nil? && params[:page].nil?
     @contacts = Contact.limit(@limit)
     @next_page = 2
