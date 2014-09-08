@@ -7,13 +7,15 @@ require_relative 'models/contact'
 
 
 get '/' do
-  # @contacts = Contact.all
+  @contacts_all = Contact.all
+  @limit = 3
   if params[:page] == nil
-    @contacts = Contact.limit(3)
+    @contacts = Contact.limit(@limit)
     @next_page = 2
   else
-    @contacts = Contact.limit(3).offset(3 * (params[:page].to_i - 1))
+    @contacts = Contact.limit(@limit).offset(@limit * (params[:page].to_i - 1))
     @next_page = params[:page].to_i + 1
+    @prev_page = params[:page].to_i - 1
   end
   erb :index
 end
