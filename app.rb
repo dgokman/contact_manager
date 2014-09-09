@@ -24,9 +24,11 @@ get '/' do
   #binding.pry
 end
 
-post '/contacts' do
-  Contact.create("first_name = ?, last_name = ?, phone_number = ?",
-    params["first_name"], params["last_name"], params["phone_number"])
+post '/' do
+  contact = Contact.create(first_name: params[:first_name],
+    last_name: params[:last_name], phone_number: params[:phone_number])
+  contact.save
+  redirect '/'
 end
 
 get '/contacts/:id' do
