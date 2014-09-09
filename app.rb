@@ -10,7 +10,8 @@ get '/' do
   @contacts_all = Contact.all
   @limit = 3
   if params[:query] && params[:page].nil?
-    @contacts = Contact.where("first_name = ? OR last_name = ?", params[:query].capitalize, params[:query].capitalize)
+    @contacts = Contact.where("first_name = ? OR last_name = ?",
+      params[:query].capitalize, params[:query].capitalize)
   elsif params[:query].nil? && params[:page].nil?
     @contacts = Contact.limit(@limit)
     @next_page = 2
@@ -21,6 +22,11 @@ get '/' do
   end
   erb :index
   #binding.pry
+end
+
+post '/contacts' do
+  Contact.create("first_name = ?, last_name = ?, phone_number = ?",
+    params["first_name"], params["last_name"], params["phone_number"])
 end
 
 get '/contacts/:id' do

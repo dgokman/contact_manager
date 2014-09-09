@@ -20,6 +20,16 @@
     <label for="query">Search: </label>
     <input type="text" name="query" id="query" />
 
-    <input type="submit" value="Search" /><br>
+    <input type="submit" value="Search" /><br><br>
+
+<div id="add_contact">Add contact</div><br>
+     <form id="contact" action="/contacts" method="post">
+
+     First Name: <input type="text" name="first_name" size="30" required/><br>
+     Last Name: <input type="text" name="last_name" size="30" required/><br><br>
+     Phone Number: <input type="text" name="phone_number" size="30" required/><br><br>
+     <input type="submit" value="add contact">
+    </form>
+
 
 </form>
